@@ -1,0 +1,32 @@
+from selenium import webdriver
+from selenium.webdriver.edge.service import Service
+import time
+from selenium.webdriver.support.select import Select
+
+s=Service("C:\seleniumed\msedgedriver.exe")
+driver =webdriver.Edge(service = s)
+driver.get('https://automationpractice.com/index.php')
+sign_in = driver.find_element_by_xpath("//*[@id='header']/div[2]/div/div/nav/div[1]/a")
+sign_in.click()
+time.sleep(2)
+driver.find_element_by_name("email_create").send_keys("jkl@gmail.com")
+driver.find_element_by_css_selector("#SubmitCreate > span").click()
+time.sleep(3)
+driver.find_element_by_xpath("//*[@id='id_gender1']").click()
+driver.find_element_by_id("customer_firstname").send_keys("1234")
+driver.find_element_by_name("customer_lastname").send_keys("8457")
+driver.find_element_by_name("passwd").send_keys("123ab5")
+driver.find_element_by_id("address1").send_keys("78546")
+driver.find_element_by_name("city").send_keys("3256")
+time.sleep(3)
+country = Select(driver.find_element_by_xpath("//*[@id='id_country']"))
+country.select_by_visible_text("United States")
+time.sleep(3)
+state = Select(driver.find_element_by_xpath("//*[@id='id_state']"))
+state.select_by_visible_text("California")
+driver.find_element_by_id("postcode").send_keys("abcvd")
+driver.find_element_by_id("phone_mobile").send_keys("vbgyfrd")
+driver.find_element_by_name("alias").send_keys("1457")
+time.sleep(3)
+register = driver.find_element_by_xpath("//*[@id='submitAccount']/span")
+register.click()
